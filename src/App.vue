@@ -1,37 +1,50 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <el-row>
-      <el-button>默认按钮</el-button>
-      <el-button type="primary">主要按钮</el-button>
-      <el-button type="success">成功按钮</el-button>
-      <el-button type="info">信息按钮</el-button>
-      <el-button type="warning">警告按钮</el-button>
-      <el-button type="danger">危险按钮</el-button>
-    </el-row>
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App" />
-  </div>
+  <el-container>
+    <el-header>
+      <el-row>
+        <el-col :span="24">
+          <h2>何为净土</h2>
+        </el-col>
+      </el-row>
+    </el-header>
+    <el-main>
+      <el-row>
+        <el-col :offset="1" :sm="22" :md="15" style="position: relative;">
+          <Map />
+          <Setting></Setting>
+        </el-col>
+        <el-col :offset="1" :sm="22" :md="5">
+          <Info></Info>
+        </el-col>
+      </el-row>
+    </el-main>
+    <el-footer>
+      <em>底部即为底线，不可逾越</em>
+    </el-footer>
+  </el-container>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
+
 import HelloWorld from './components/HelloWorld.vue';
+import Map from './components/Map.vue';
+import Info from './components/Info.vue';
+import Setting from './components/Setting.vue';
 
 @Component({
   components: {
-    HelloWorld
+    HelloWorld,
+    Map,
+    Info,
+    Setting
   }
 })
 export default class App extends Vue {}
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+h2 {
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
 }
 </style>

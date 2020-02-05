@@ -1,13 +1,12 @@
 <template>
-  <div>项目开发</div>
+  <div>信息展示</div>
 </template>
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
 
 @Component
-export default class HelloWorld extends Vue {
-  @Prop() private msg!: string;
+export default class Info extends Vue {
   constructor() {
     super();
   }
