@@ -1,24 +1,13 @@
-# test
+# 净土 - 疫情数据可视化
 
-## Project setup
-```
-npm install
-```
+## 目的
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+为了人类生活的更加美好而努力
 
-### Compiles and minifies for production
-```
-npm run build
-```
+## 使用框架
 
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+- 前端框架：vue
+- UI 框架：[element-ui](https://element.eleme.cn/#/zh-CN)
+- HTTP 客户端：[axios](https://github.com/axios/axios)
+- 数据可视化工具：[echart](https://echarts.apache.org/zh/)
+- 地图：[百度地图](https://lbsyun.baidu.com/index.php?title=jspopular3.0)
