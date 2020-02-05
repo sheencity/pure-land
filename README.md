@@ -9,5 +9,10 @@
 - 前端框架：vue
 - UI 框架：[element-ui](https://element.eleme.cn/#/zh-CN)
 - HTTP 客户端：[axios](https://github.com/axios/axios)
-- 数据可视化工具：[echart](https://echarts.apache.org/zh/)
+- 数据可视化工具：[echarts](https://echarts.apache.org/zh/)
 - 地图：[百度地图](https://lbsyun.baidu.com/index.php?title=jspopular3.0)
+
+## 参考文档
+
+- [echarts 百度地图插件文档](https://github.com/apache/incubator-echarts/tree/master/extension/bmap)
+- [百度地图示例](http://lbsyun.baidu.com/jsdemo.htm#i4_1)
