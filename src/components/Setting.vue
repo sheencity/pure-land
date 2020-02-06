@@ -27,7 +27,7 @@
       </li>
       <li @click="menuClick('火车站')">
         <span>
-          <i class="el-icon-shopping-cart-2"></i>
+          <i class="el-icon-price-tag"></i>
           <span>火车站</span>
         </span>
       </li>
