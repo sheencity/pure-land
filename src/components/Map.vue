@@ -76,7 +76,8 @@ export default class Map extends Vue {
         series.push(
           await this.getConfirmedOption(),
           await this.getUnConfirmedOption(),
-          await this.getHospitalOption()
+          await this.getHospitalOption(),
+          await this.getRailwayOption()
         );
         break;
     }
