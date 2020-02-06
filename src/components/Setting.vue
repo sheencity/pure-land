@@ -19,12 +19,12 @@
           <span>医院</span>
         </span>
       </li>
-      <li @click="menuClick('公交')">
+      <!-- <li @click="menuClick('公交')">
         <span>
           <i class="el-icon-guide"></i>
           <span>公交</span>
         </span>
-      </li>
+      </li>-->
       <li @click="menuClick('火车站')">
         <span>
           <i class="el-icon-price-tag"></i>
@@ -53,7 +53,6 @@ export default class Setting extends Vue {
   }
   menuClick(menu: string) {
     DataStore.menuClickEmitter.next(menu);
-
   }
 }
 </script>
