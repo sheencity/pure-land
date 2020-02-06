@@ -12,6 +12,7 @@
     "core-js": "^3.4.4",
     "echarts": "^4.6.0",
     "element-ui": "^2.13.0",
+    "rxjs": "^6.5.4",
     "vue": "^2.6.10",
     "vue-class-component": "^7.0.2",
     "vue-property-decorator": "^8.3.0"

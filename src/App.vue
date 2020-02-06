@@ -14,7 +14,7 @@
         </el-col>
         <el-col :span="3">
           <div>
-            <el-input v-model="input" placeholder="请输入搜索内容"></el-input>
+            <el-input placeholder="请输入搜索内容"></el-input>
           </div>
         </el-col>
         <el-col :span="10">
@@ -26,7 +26,7 @@
       <el-row>
         <el-col style="position: relative;">
           <Map />
-          <!-- <Info></Info> -->
+          <Info v-show="infoShow"></Info>
         </el-col>
         <!-- <el-col :offset="1" :sm="22" :md="5">
         </el-col> -->
@@ -36,12 +36,14 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Component, Vue, Watch } from 'vue-property-decorator';
 
 import HelloWorld from './components/HelloWorld.vue';
 import Map from './components/Map.vue';
 import Info from './components/Info.vue';
 import Setting from './components/Setting.vue';
+
+import { DataStore } from './services/data-store';
 
 @Component({
   components: {
@@ -51,7 +53,18 @@ import Setting from './components/Setting.vue';
     Setting
   }
 })
-export default class App extends Vue {}
+export default class App extends Vue {
+  infoShow = false;
+  constructor() {
+    super();
+  }
+  mounted() {
+    DataStore.infoShowEmitter.asObservable().subscribe(show => {
+      console.log(show, '检测 info show 变化');
+      this.infoShow = show;
+    });
+  }
+}
 </script>
 
 <style>

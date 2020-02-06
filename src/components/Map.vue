@@ -8,6 +8,20 @@ declare const BMap: any;
 import { Component, Prop, Vue } from 'vue-property-decorator';
 import echarts from 'echarts';
 import 'echarts/extension/bmap/bmap';
+import { DataStore } from '../services/data-store';
+
+interface Params {
+  componentType: string;
+  componentSubType: string;
+  componentIndex: number;
+  seriesType: string;
+  seriesIndex: number;
+  seriesId: string;
+  seriesName: string;
+  name: string;
+  dataIndex: number;
+  type: string;
+}
 
 @Component
 export default class Map extends Vue {
@@ -27,6 +41,7 @@ export default class Map extends Vue {
 
     const styleJsonConfig = require('../assets/data/custom_map_config.json');
 
+    chart.showLoading();
     const option = {
       title: {
         textStyle: {
@@ -54,13 +69,19 @@ export default class Map extends Vue {
         }
       },
       series: [
-        await this.getConfirmedOption(),
-        await this.getUnConfirmedOption(),
-        await this.getHospitalOption()
+        await this.getConfirmedOption()
+        // await this.getUnConfirmedOption(),
+        // await this.getHospitalOption()
       ]
     };
 
     chart.setOption(option as any);
+    chart.hideLoading();
+    chart.on('click', (params: Params) => {
+      console.log({ params });
+      DataStore.infoShowEmitter.next(true);
+      DataStore.infoEmitter.next(params);
+    });
     console.log({ chart });
   }
   getPoint(name: string) {
