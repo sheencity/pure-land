@@ -156,7 +156,7 @@ export default class Map extends Vue {
         padding: 6
       },
       itemStyle: {
-        // color: '#ddb926'
+        color: '#8b0000'
       },
       emphasis: {
         label: {
@@ -189,7 +189,7 @@ export default class Map extends Vue {
         padding: 6
       },
       itemStyle: {
-        // color: '#ddb926'
+        color: '#ddb926'
       },
       emphasis: {
         label: {
@@ -226,7 +226,7 @@ export default class Map extends Vue {
         padding: 6
       },
       itemStyle: {
-        // color: '#ddb926'
+        color: '#003399'
       },
       emphasis: {
         label: {
@@ -258,7 +258,7 @@ export default class Map extends Vue {
         padding: 6
       },
       itemStyle: {
-        // color: '#ddb926'
+        color: '#ba55d3'
       },
       emphasis: {
         label: {
