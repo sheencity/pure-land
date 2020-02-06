@@ -69,7 +69,7 @@ export default class Map extends Vue {
     );
   }
   async getData(names: string[]) {
-    const data = [];
+    const data: { name: string; value: any[] }[] = [];
     for (const name of names) {
       const point = await this.getPoint(name);
       data.push({
@@ -146,20 +146,25 @@ export default class Map extends Vue {
     };
   }
   async getHospitalOption() {
-    const hospital: {
+    const hospitals: {
       district: string;
       name: string;
       time: string;
     }[] = require('../assets/data/hospitals.json');
+    const data = (await this.getData(hospitals.map(h => h.name))).map(d => {
+      const hospital = hospitals.find(h => h.name === d.name);
+      return hospital ? ((d.value[2] = hospital.time), d) : d;
+    });
+    console.log({ data });
     return {
       name: '定点医院',
       type: 'scatter',
       coordinateSystem: 'bmap',
-      data: await this.getData(hospital.map(h => h.name)),
+      data: data,
       symbolSize: 14,
       label: {
         color: 'white',
-        formatter: '{a}\n{b}',
+        formatter: '{a}\n{b}\n营业时间: {@[2]}',
         position: 'right',
         backgroundColor: 'rgba(0,0,0,0.8)',
         lineHeight: 16,
