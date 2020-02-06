@@ -3,7 +3,7 @@
     <el-header style="height:55px; padding:7px">
       <el-row>
         <el-col :span="1">
-            <img src="./assets/logo.png" width="40px" height="40px"/>
+          <img src="./assets/logo.png" width="40px" height="40px" />
         </el-col>
         <el-col :span="2">
           <div>
