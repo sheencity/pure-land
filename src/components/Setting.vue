@@ -33,7 +33,7 @@
       </li>
       <li @click="menuClick('飞机场')">
         <span>
-          <i class="el-icon-s-promotion"></i>
+          <i class="el-icon-orange"></i>
           <span>飞机场</span>
         </span>
       </li>
