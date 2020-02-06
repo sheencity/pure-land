@@ -66,6 +66,9 @@ export default class Map extends Vue {
       case '火车站':
         series.push(await this.getRailwayOption());
         break;
+      case '飞机场':
+        series.push(await this.getAirportOption());
+        break;
       case '小区':
         series.push(
           await this.getConfirmedOption(),
@@ -77,7 +80,8 @@ export default class Map extends Vue {
           await this.getConfirmedOption(),
           await this.getUnConfirmedOption(),
           await this.getHospitalOption(),
-          await this.getRailwayOption()
+          await this.getRailwayOption(),
+          await this.getAirportOption()
         );
         break;
     }
@@ -208,7 +212,6 @@ export default class Map extends Vue {
       const hospital = hospitals.find(h => h.name === d.name);
       return hospital ? ((d.value[2] = hospital.time), d) : d;
     });
-    console.log({ data });
     return {
       name: '定点医院',
       type: 'scatter',
@@ -259,6 +262,38 @@ export default class Map extends Vue {
       },
       itemStyle: {
         color: '#ba55d3'
+      },
+      emphasis: {
+        label: {
+          show: true
+        }
+      }
+    };
+  }
+  async getAirportOption() {
+    const airports: {
+      name: string;
+      list: { flight: string; date: string; }[];
+    }[] = require('../assets/data/airport.json');
+    const data = await this.getData(airports.map(h => h.name));
+    return {
+      name: '飞机场',
+      type: 'scatter',
+      coordinateSystem: 'bmap',
+      data: data,
+      symbolSize: 14,
+      label: {
+        color: 'white',
+        formatter: '{a}\n{b}',
+        position: 'right',
+        backgroundColor: 'rgba(0,0,0,0.8)',
+        lineHeight: 16,
+        borderRadius: 2,
+        borderColor: 'auto',
+        padding: 6
+      },
+      itemStyle: {
+        color: '#ff4d40'
       },
       emphasis: {
         label: {

@@ -31,6 +31,12 @@
           <span>火车站</span>
         </span>
       </li>
+      <li @click="menuClick('飞机场')">
+        <span>
+          <i class="el-icon-s-promotion"></i>
+          <span>飞机场</span>
+        </span>
+      </li>
     </ul>
   </div>
 </template>
