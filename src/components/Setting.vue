@@ -28,13 +28,13 @@
       <li @click="menuClick('火车站')">
         <span>
           <i class="el-icon-price-tag"></i>
-          <span>火车站</span>
+          <span>火车</span>
         </span>
       </li>
       <li @click="menuClick('飞机场')">
         <span>
           <i class="el-icon-orange"></i>
-          <span>飞机场</span>
+          <span>飞机</span>
         </span>
       </li>
     </ul>
