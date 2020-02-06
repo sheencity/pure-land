@@ -2,17 +2,22 @@
   <el-container>
     <el-header style="height:55px; padding:7px">
       <el-row>
-        <el-col :span="3">
+        <el-col :span="1">
+          <div>
+            <el-image style="width: 100px; height: 50px" :src="'http://m.qpic.cn/psc?/V12O452C3L68pj/c5Brg5wCEGO6zAda9BhoR9*EZCaEty4tC8.f6tgsJgpY3lR0Wagm*mvpTG2ZZTXENIhAqN0qRtOYBCMFSsbLt7N35tih600A*69*o9DpyR8!/b&bo=fgE7AQAAAAADB2c!&rf=viewer_4'" :fit="'contain'"> </el-image>
+          </div>
+        </el-col>
+        <el-col :span="2">
           <div>
             <h2>PureLand</h2>
           </div>
         </el-col>
-        <el-col :span="5">
+        <el-col :span="3">
           <div>
             <el-input v-model="input" placeholder="请输入搜索内容"></el-input>
           </div>
         </el-col>
-        <el-col :span="16">
+        <el-col :span="10">
           <Setting></Setting>
         </el-col>
       </el-row>
