@@ -37,11 +37,50 @@ export default class Map extends Vue {
     // const styleJson = require('../assets/data/custom_map_config.json');
     console.log({ container });
     const chart = echarts.init(container);
-    chart.clear();
 
+    chart.on('click', (params: Params) => {
+      console.log({ params });
+      DataStore.infoShowEmitter.next(true);
+      DataStore.infoEmitter.next(params);
+    });
+    console.log({ chart });
+    DataStore.menuClickEmitter.asObservable().subscribe(async menu => {
+      await this.setOption(chart, menu);
+    });
+    await this.setOption(chart);
+  }
+  async setOption(chart: echarts.ECharts, type?: string) {
+    const series: any[] = [];
+    chart.clear();
     const styleJsonConfig = require('../assets/data/custom_map_config.json');
 
     chart.showLoading();
+
+    // await this.getConfirmedOption()
+    // await this.getUnConfirmedOption(),
+    // await this.getHospitalOption()
+    switch (type) {
+      case '医院':
+        series.push(await this.getHospitalOption());
+        break;
+      case '火车站':
+        series.push(await this.getRailwayOption());
+        break;
+      case '小区':
+        series.push(
+          await this.getConfirmedOption(),
+          await this.getUnConfirmedOption()
+        );
+        break;
+      case '全选':
+        series.push(
+          await this.getConfirmedOption(),
+          await this.getUnConfirmedOption(),
+          await this.getHospitalOption()
+        );
+        break;
+    }
+
     const option = {
       title: {
         textStyle: {
@@ -68,21 +107,11 @@ export default class Map extends Vue {
           styleJson: styleJsonConfig
         }
       },
-      series: [
-        await this.getConfirmedOption()
-        // await this.getUnConfirmedOption(),
-        // await this.getHospitalOption()
-      ]
+      series: series
     };
 
-    chart.setOption(option as any);
+    chart.setOption(option as echarts.EChartOption);
     chart.hideLoading();
-    chart.on('click', (params: Params) => {
-      console.log({ params });
-      DataStore.infoShowEmitter.next(true);
-      DataStore.infoEmitter.next(params);
-    });
-    console.log({ chart });
   }
   getPoint(name: string) {
     const geo = new BMap.Geocoder();
@@ -188,6 +217,38 @@ export default class Map extends Vue {
       label: {
         color: 'white',
         formatter: '{a}\n{b}\n营业时间: {@[2]}',
+        position: 'right',
+        backgroundColor: 'rgba(0,0,0,0.8)',
+        lineHeight: 16,
+        borderRadius: 2,
+        borderColor: 'auto',
+        padding: 6
+      },
+      itemStyle: {
+        // color: '#ddb926'
+      },
+      emphasis: {
+        label: {
+          show: true
+        }
+      }
+    };
+  }
+  async getRailwayOption() {
+    const railways: {
+      name: string;
+      list: { train: string; carriage: string; time: string }[];
+    }[] = require('../assets/data/railwaystations.json');
+    const data = await this.getData(railways.map(h => h.name));
+    return {
+      name: '火车站',
+      type: 'scatter',
+      coordinateSystem: 'bmap',
+      data: data,
+      symbolSize: 14,
+      label: {
+        color: 'white',
+        formatter: '{a}\n{b}',
         position: 'right',
         backgroundColor: 'rgba(0,0,0,0.8)',
         lineHeight: 16,

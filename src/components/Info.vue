@@ -2,6 +2,7 @@
   <div class="container">
     <el-card class="box-card">
       {{ info.name }}
+      <p v-for="m in ms" v-bind:key="m">{{ m }}</p>
     </el-card>
   </div>
 </template>
@@ -13,6 +14,8 @@ import { DataStore } from '../services/data-store';
 @Component
 export default class Info extends Vue {
   info: any = {};
+  ms = ['第一个', '第二个'];
+
   constructor() {
     super();
   }
