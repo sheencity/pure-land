@@ -1,0 +1,38 @@
+[
+    {
+        "id": "1",
+        "type": "火车",
+        "train_number": "G381",
+        "start_position": "北京南",
+        "end_position": "锦州南",
+        "start_date": "2020-01-24 07:54:00",
+        "end_date": "2020-01-24 11:06:00"
+    },
+    {
+        "id": "2",
+        "type": "火车",
+        "train_number": "D740",
+        "start_position": "北京南站",
+        "end_position": "北京西站",
+        "start_date": "2020-01-23 20:49:00",
+        "end_date": "2020-01-24 06:02:00"
+    },
+    {
+        "id": "3",
+        "type": "飞机",
+        "train_number": "JD5859",
+        "start_position": "北京",
+        "end_position": "南昌",
+        "start_date": "2020-01-27 00:00:00",
+        "end_date": "2020-01-27 23:59:59"
+    },
+    {
+        "id": "4",
+        "type": "飞机",
+        "train_number": "ZH4751",
+        "start_position": "武汉",
+        "end_position": "北京",
+        "start_date": "2020-01-22 00:00:00",
+        "end_date": "2020-01-22 23:59:59"
+    }
+]
