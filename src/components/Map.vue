@@ -115,6 +115,15 @@ export default class Map extends Vue {
       series: series
     };
 
+    switch (type) {
+      case '飞机场':
+        option.bmap.zoom = 10;
+        break;
+      default:
+        option.bmap.zoom = 12;
+        break;
+    }
+
     chart.setOption(option as echarts.EChartOption);
     chart.hideLoading();
   }
