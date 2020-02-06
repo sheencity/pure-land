@@ -5,8 +5,7 @@
       size="mini"
       icon="el-icon-aim"
       circle
-      v-show="!isExpand"
-      @click="isExpand = true"
+      @click="isExpand = !isExpand"
     ></el-button>
     <el-card class="box-card" v-show="isExpand">
       设置设置
@@ -19,13 +18,9 @@ import { Component, Prop, Vue } from 'vue-property-decorator';
 
 @Component
 export default class Setting extends Vue {
-  private isExpand = false;
+  isExpand = false;
   constructor() {
     super();
-    document.onclick = () => {
-      this.isExpand = !this.isExpand;
-      console.log('click', this.isExpand);
-    };
   }
   stopPropagation(event: Event) {
     event.stopPropagation();

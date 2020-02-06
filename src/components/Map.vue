@@ -3,6 +3,8 @@
 </template>
 
 <script lang="ts">
+declare const BMap: any;
+
 import { Component, Prop, Vue } from 'vue-property-decorator';
 import echarts from 'echarts';
 import 'echarts/extension/bmap/bmap';
@@ -16,7 +18,7 @@ export default class Map extends Vue {
     console.log('mounted');
     this.init();
   }
-  init() {
+  async init() {
     const container = document.querySelector('#container') as HTMLDivElement;
     // const styleJson = require('../assets/data/custom_map_config.json');
     console.log({ container });
@@ -40,8 +42,8 @@ export default class Map extends Vue {
         // 百度地图缩放
         zoom: 12,
         type: 'map',
-        //mapType: 'china',
-        //selectedMode: 'multiple',
+        mapType: 'china',
+        // selectedMode: 'multiple',
         //是否开启拖拽缩放，可以只设置 'scale' 或者 'move'
         roam: true,
         //百度地图的自定义样式
@@ -49,11 +51,131 @@ export default class Map extends Vue {
           // styleJson
         }
       },
-      series: []
+      series: [
+        await this.getConfirmedOption(),
+        await this.getUnConfirmedOption(),
+        await this.getHospitalOption()
+      ]
     };
 
     chart.setOption(option as any);
     console.log({ chart });
+  }
+  getPoint(name: string) {
+    const geo = new BMap.Geocoder();
+
+    return new Promise<{ lng: number; lat: number }>(resolve =>
+      geo.getPoint(name, resolve)
+    );
+  }
+  async getData(names: string[]) {
+    const data = [];
+    for (const name of names) {
+      const point = await this.getPoint(name);
+      data.push({
+        name: name,
+        value: [point.lng, point.lat]
+      });
+    }
+    return data;
+  }
+  async getConfirmedOption() {
+    const {
+      confirmed
+    }: {
+      confirmed: string[];
+      suspected: string[];
+    } = require('../assets/data/estates.json');
+    return {
+      name: '确诊人群',
+      type: 'scatter',
+      coordinateSystem: 'bmap',
+      data: await this.getData(confirmed),
+      symbolSize: 14,
+      label: {
+        color: 'white',
+        formatter: '{a}\n{b}',
+        position: 'right',
+        backgroundColor: 'rgba(0,0,0,0.8)',
+        lineHeight: 16,
+        borderRadius: 2,
+        borderColor: 'auto',
+        padding: 6
+      },
+      itemStyle: {
+        // color: '#ddb926'
+      },
+      emphasis: {
+        label: {
+          show: true
+        }
+      }
+    };
+  }
+  async getUnConfirmedOption() {
+    const {
+      suspected
+    }: {
+      confirmed: string[];
+      suspected: string[];
+    } = require('../assets/data/estates.json');
+    return {
+      name: '疑似人群',
+      type: 'scatter',
+      coordinateSystem: 'bmap',
+      data: await this.getData(suspected),
+      symbolSize: 14,
+      label: {
+        color: 'white',
+        formatter: '{a}\n{b}',
+        position: 'right',
+        backgroundColor: 'rgba(0,0,0,0.8)',
+        lineHeight: 16,
+        borderRadius: 2,
+        borderColor: 'auto',
+        padding: 6
+      },
+      itemStyle: {
+        // color: '#ddb926'
+      },
+      emphasis: {
+        label: {
+          show: true
+        }
+      }
+    };
+  }
+  async getHospitalOption() {
+    const hospital: {
+      district: string;
+      name: string;
+      time: string;
+    }[] = require('../assets/data/hospitals.json');
+    return {
+      name: '定点医院',
+      type: 'scatter',
+      coordinateSystem: 'bmap',
+      data: await this.getData(hospital.map(h => h.name)),
+      symbolSize: 14,
+      label: {
+        color: 'white',
+        formatter: '{a}\n{b}',
+        position: 'right',
+        backgroundColor: 'rgba(0,0,0,0.8)',
+        lineHeight: 16,
+        borderRadius: 2,
+        borderColor: 'auto',
+        padding: 6
+      },
+      itemStyle: {
+        // color: '#ddb926'
+      },
+      emphasis: {
+        label: {
+          show: true
+        }
+      }
+    };
   }
 }
 </script>
