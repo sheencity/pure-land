@@ -3,9 +3,7 @@
     <el-header style="height:55px; padding:7px">
       <el-row>
         <el-col :span="1">
-          <div>
-            <el-image style="width: 100px; height: 50px" :src="'https://raw.githubusercontent.com/sheencity/pure-land/develop/src/assets/logo.png'" :fit="'contain'"> </el-image>
-          </div>
+            <img src="./assets/logo.png" width="40px" height="40px"/>
         </el-col>
         <el-col :span="2">
           <div>
