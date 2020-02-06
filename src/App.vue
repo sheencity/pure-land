@@ -1,6 +1,6 @@
 <template>
   <el-container>
-    <el-header style="height:40px">
+    <el-header style="height:55px; padding:7px">
       <el-row>
         <el-col :span="3">
           <div>
@@ -13,57 +13,20 @@
           </div>
         </el-col>
         <el-col :span="16">
-          <div>
-            <ul>
-              <li>
-                <span>
-                  <i class="el-icon-set-up"></i>
-                  <span>全选</span>
-                </span>
-              </li>
-              <li>
-                <span>
-                  <i class="el-icon-office-building"></i>
-                  <span>小区</span>
-                </span>
-              </li>
-              <li>
-                <span>
-                  <i class="el-icon-school"></i>
-                  <span>医院</span>
-                </span>
-              </li>
-              <li>
-                <span>
-                  <i class="el-icon-guide"></i>
-                  <span>公交</span>
-                </span>
-              </li>
-              <li>
-                <span>
-                  <i class="el-icon-shopping-cart-2"></i>
-                  <span>商场</span>
-                </span>
-              </li>
-            </ul>
-          </div>
+          <Setting></Setting>
         </el-col>
       </el-row>
     </el-header>
-    <el-main>
+    <el-main style="padding: 0px">
       <el-row>
-        <el-col :offset="1" :sm="22" :md="15" style="position: relative;">
+        <el-col style="position: relative;">
           <Map />
-          <Setting></Setting>
+          <!-- <Info></Info> -->
         </el-col>
-        <el-col :offset="1" :sm="22" :md="5">
-          <Info></Info>
-        </el-col>
+        <!-- <el-col :offset="1" :sm="22" :md="5">
+        </el-col> -->
       </el-row>
     </el-main>
-    <el-footer>
-      <em>底部即为底线，不可逾越</em>
-    </el-footer>
   </el-container>
 </template>
 
@@ -90,6 +53,10 @@ export default class App extends Vue {}
 h2 {
   text-align: center;
   margin: 4px; /* 将默认的外边距去掉 */
+}
+
+body {
+  margin: 0;
 }
 
 ul {

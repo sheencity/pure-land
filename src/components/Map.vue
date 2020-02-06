@@ -188,7 +188,7 @@ export default class Map extends Vue {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .container {
-  height: 700px;
+  height: 740px;
   width: 100%;
 }
 </style>

@@ -1,15 +1,37 @@
 <template>
-  <div class="container" @click="stopPropagation">
-    <el-button
-      type="primary"
-      size="mini"
-      icon="el-icon-aim"
-      circle
-      @click="isExpand = !isExpand"
-    ></el-button>
-    <el-card class="box-card" v-show="isExpand">
-      设置设置
-    </el-card>
+  <div>
+    <ul>
+      <li>
+        <span>
+          <i class="el-icon-set-up"></i>
+          <span>全选</span>
+        </span>
+      </li>
+      <li>
+        <span>
+          <i class="el-icon-office-building"></i>
+          <span>小区</span>
+        </span>
+      </li>
+      <li>
+        <span>
+          <i class="el-icon-school"></i>
+          <span>医院</span>
+        </span>
+      </li>
+      <li>
+        <span>
+          <i class="el-icon-guide"></i>
+          <span>公交</span>
+        </span>
+      </li>
+      <li>
+        <span>
+          <i class="el-icon-shopping-cart-2"></i>
+          <span>商场</span>
+        </span>
+      </li>
+    </ul>
   </div>
 </template>
 
