@@ -1,0 +1,165 @@
+{
+    "station": 
+    [
+        {
+            "name": "北京站",
+            "list": [
+                {
+                    "train": "G6713",
+                    "carriage": "3号",
+                    "time": "2020-01-20"
+                },
+                {
+                    "train": "Z61",
+                    "carriage": "18号",
+                    "time": "2020-01-18"
+                },
+                {
+                    "train": "Z61",
+                    "carriage": "3号",
+                    "time": "2020-01-20"
+                },
+                {
+                    "train": "K429",
+                    "carriage": "9号, 1号",
+                    "time": "2020-01-17"
+                },
+                {
+                    "train": "G58",
+                    "carriage": "8号",
+                    "time": "2020-01-16"
+                },
+                {
+                    "train": "K27",
+                    "carriage": "5号",
+                    "time": "2020-01-14"
+                }
+            ]
+        },
+        {
+            "name": "北京南站",
+            "list": [
+                {
+                    "train": "G8923",
+                    "carriage": "14号",
+                    "time": "2020-01-22"
+                },
+                {
+                    "train": "G381",
+                    "carriage": "8号",
+                    "time": "2020-01-24"
+                },
+                {
+                    "train": "G41",
+                    "carriage": "3号",
+                    "time": "2020-01-19"
+                },
+                {
+                    "train": "G393",
+                    "carriage": "14号",
+                    "time": "2020-01-17"
+                },
+                {
+                    "train": "G127",
+                    "carriage": "3号",
+                    "time": "2020-01-17"
+                },
+                {
+                    "train": "G1568",
+                    "carriage": "4号",
+                    "time": "2020-01-14"
+                }
+            ]
+        },
+        {
+            "name": "北京西站",
+            "list": [
+                {
+                    "train": "G683",
+                    "carriage": "7号",
+                    "time": "2020-01-20"
+                },
+                {
+                    "train": "Z162",
+                    "carriage": "14号",
+                    "time": "2020-01-20"
+                },
+                {
+                    "train": "G588",
+                    "carriage": "12号",
+                    "time": "2020-01-21"
+                },
+                {
+                    "train": "G488",
+                    "carriage": "4号",
+                    "time": "2020-01-20"
+                },
+                {
+                    "train": "D740",
+                    "carriage": "2号",
+                    "time": "2020-01-23"
+                },
+                {
+                    "train": "D740",
+                    "carriage": "3号",
+                    "time": "2020-01-23"
+                },
+                {
+                    "train": "G488",
+                    "carriage": "5号",
+                    "time": "2020-01-19"
+                },
+                {
+                    "train": "G805",
+                    "carriage": "5号",
+                    "time": "2020-01-19"
+                },
+                {
+                    "train": "G520",
+                    "carriage": "11号",
+                    "time": "2020-01-18"
+                },
+                {
+                    "train": "G520",
+                    "carriage": "13号",
+                    "time": "2020-01-18"
+                },
+                {
+                    "train": "G520",
+                    "carriage": "4号",
+                    "time": "2020-01-18"
+                },
+                {
+                    "train": "G80",
+                    "carriage": "6号",
+                    "time": "2020-01-17"
+                },
+                {
+                    "train": "K4780",
+                    "carriage": "11号",
+                    "time": "2020-01-17"
+                },
+                {
+                    "train": "Z38",
+                    "carriage": "4号",
+                    "time": "2020-01-16"
+                },
+                {
+                    "train": "T10",
+                    "carriage": "7号",
+                    "time": "2020-01-15"
+                },
+                {
+                    "train": "C557",
+                    "carriage": "6号",
+                    "time": "2020-01-13"
+                },
+                {
+                    "train": "K4780",
+                    "carriage": "11号",
+                    "time": "2020-01-11"
+                }
+            ]
+        }
+    ]
+}
