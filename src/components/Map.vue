@@ -273,8 +273,9 @@ export default class Map extends Vue {
   async getAirportOption() {
     const airports: {
       name: string;
-      list: { flight: string; date: string; }[];
+      list: { flight: string; date: string }[];
     }[] = require('../assets/data/airport.json');
+
     const data = await this.getData(airports.map(h => h.name));
     return {
       name: '飞机场',

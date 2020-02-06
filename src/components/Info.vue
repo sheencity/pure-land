@@ -1,5 +1,5 @@
 <template>
-  <div class="container"  v-show="isInfoShow">
+  <div class="container" v-show="isInfoShow">
     <el-card class="box-card">
       {{ info.name }}
       <p v-for="m in ms" v-bind:key="m">{{ m }}</p>
@@ -53,14 +53,16 @@ export default class Info extends Vue {
 
   mounted() {
     DataStore.infoEmitter.asObservable().subscribe(info => {
-      this.isInfoShow = (info as Params).seriesName === '火车站' || (info as Params).seriesName === '飞机场';
+      this.isInfoShow =
+        (info as Params).seriesName === '火车站' ||
+        (info as Params).seriesName === '飞机场';
       console.log(info, '检测 info 变化');
       const name = (info as Params).name;
       this.info.name = name + ' 患者同行信息';
-      
-      if((info as Params).seriesName === '火车站'){
+
+      if ((info as Params).seriesName === '火车站') {
         this.ms = this.getTrainList(name);
-      }else{
+      } else {
         this.ms = this.getFlightList(name);
       }
     });
