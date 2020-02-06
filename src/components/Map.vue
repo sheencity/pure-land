@@ -30,10 +30,10 @@ export default class Map extends Vue {
     const option = {
       title: {
         textStyle: {
-          color: '#fff'
+          color: '#000000'
         },
         subtextStyle: {
-          color: '#fff'
+          color: '#000000'
         },
         text: '疫情数据可视化',
         left: 'center'
