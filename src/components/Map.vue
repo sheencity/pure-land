@@ -25,6 +25,8 @@ export default class Map extends Vue {
     const chart = echarts.init(container);
     chart.clear();
 
+    const styleJsonConfig = require('../assets/data/custom_map_config.json');
+
     const option = {
       title: {
         textStyle: {
@@ -48,7 +50,7 @@ export default class Map extends Vue {
         roam: true,
         //百度地图的自定义样式
         mapStyle: {
-          // styleJson
+          styleJson: styleJsonConfig
         }
       },
       series: [
