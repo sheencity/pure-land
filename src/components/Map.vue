@@ -34,16 +34,13 @@ export default class Map extends Vue {
   }
   async init() {
     const container = document.querySelector('#container') as HTMLDivElement;
-    // const styleJson = require('../assets/data/custom_map_config.json');
-    console.log({ container });
+
     const chart = echarts.init(container);
 
     chart.on('click', (params: Params) => {
-      console.log({ params });
       DataStore.infoShowEmitter.next(true);
       DataStore.infoEmitter.next(params);
     });
-    console.log({ chart });
     DataStore.menuClickEmitter.asObservable().subscribe(async menu => {
       await this.setOption(chart, menu);
     });
@@ -94,9 +91,6 @@ export default class Map extends Vue {
 
     chart.showLoading();
 
-    // await this.getConfirmedOption()
-    // await this.getUnConfirmedOption(),
-    // await this.getHospitalOption()
     switch (type) {
       case '医院':
         series.push(await this.getHospitalOption());
@@ -166,6 +160,9 @@ export default class Map extends Vue {
     chart.hideLoading();
   }
   getPoint(name: string) {
+    if (DataStore.pointMap.has(name)) {
+      return DataStore.pointMap.get(name) as { lng: number; lat: number };
+    }
     const geo = new BMap.Geocoder();
 
     return new Promise<{ lng: number; lat: number }>(resolve =>
