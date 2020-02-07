@@ -47,8 +47,46 @@ export default class Map extends Vue {
     DataStore.menuClickEmitter.asObservable().subscribe(async menu => {
       await this.setOption(chart, menu);
     });
+    DataStore.centerPositionEmitter.asObservable().subscribe(async position => {
+      await this.setPositionCenter(chart, position);
+    });
     await this.setOption(chart);
   }
+
+  async setPositionCenter(chart: echarts.ECharts, position: string) {
+    const point = await this.getPoint(position);
+    console.log('search point:', point);
+    const styleJsonConfig = require('../assets/data/custom_map_config.json');
+    const option = {
+      title: {
+        textStyle: {
+          color: '#000000'
+        },
+        subtextStyle: {
+          color: '#000000'
+        },
+        text: '疫情数据可视化',
+        left: 'center'
+      },
+      bmap: {
+        // 百度地图中心经纬度
+        center: [point.lng, point.lat],
+        // 百度地图缩放
+        zoom: 15,
+        type: 'map',
+        mapType: 'china',
+        // selectedMode: 'multiple',
+        //是否开启拖拽缩放，可以只设置 'scale' 或者 'move'
+        roam: true,
+        //百度地图的自定义样式
+        mapStyle: {
+          styleJson: styleJsonConfig
+        }
+      }
+    };
+    chart.setOption(option);
+  }
+
   async setOption(chart: echarts.ECharts, type?: string) {
     const series: any[] = [];
     chart.clear();

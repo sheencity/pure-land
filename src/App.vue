@@ -12,7 +12,11 @@
         </el-col>
         <el-col :span="3">
           <div>
-            <el-input placeholder="请输入搜索内容"></el-input>
+            <el-input
+              v-model="centerPosition"
+              placeholder="请输入搜索内容"
+              @keyup.enter.native="changeCenterPosition"
+            ></el-input>
           </div>
         </el-col>
         <el-col :span="10">
@@ -27,7 +31,7 @@
           <Info v-show="infoShow"></Info>
         </el-col>
         <!-- <el-col :offset="1" :sm="22" :md="5">
-        </el-col> -->
+        </el-col>-->
       </el-row>
     </el-main>
   </el-container>
@@ -53,6 +57,7 @@ import { DataStore } from './services/data-store';
 })
 export default class App extends Vue {
   infoShow = false;
+  centerPosition = '';
   constructor() {
     super();
   }
@@ -61,6 +66,9 @@ export default class App extends Vue {
       console.log(show, '检测 info show 变化');
       this.infoShow = show;
     });
+  }
+  changeCenterPosition() {
+    DataStore.centerPositionEmitter.next(this.centerPosition);
   }
 }
 </script>
