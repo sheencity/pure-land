@@ -22,11 +22,24 @@ npm run serve
 
 ## 使用框架
 
-- 前端框架：vue
+- 前端框架：[vue](https://cn.vuejs.org/)
 - UI 框架：[element-ui](https://element.eleme.cn/#/zh-CN)
 - HTTP 客户端：[axios](https://github.com/axios/axios)
 - 数据可视化工具：[echarts](https://echarts.apache.org/zh/)
 - 地图：[百度地图](https://lbsyun.baidu.com/index.php?title=jspopular3.0)
+
+## Roadmap
+
+- [x] 数据自动爬取
+- [x] 发热医院的捐赠信息
+- [x] 物资采购地点信息
+- [x] 航班和列车的起始地和目的地的信息
+- [x] 适配移动端
+- [x] 病患通信的公交和地铁区间信息
+
+## 贡献
+
+欢迎加入我们，完善我们的项目，为它开发新的功能，或者为它添加新的数据。如果对于我们的项目有什么新的想法，欢迎给我们提 issue。为了美好。
 
 ## 参考文档
 
